@@ -9,8 +9,7 @@ function startup()
         var SpeechRecognition=window.SpeechRecognition || window.webkitSpeechRecognition;
         var recognition=new SpeechRecognition();
 
-  document.getElementById("speech").onclick=()=>{
-
+document.getElementById("speech").onclick=()=>{
 recognition.start();
 recognition.continuous=true;
 recognition.interimResults=true;
@@ -22,27 +21,23 @@ document.getElementById("stop").onclick=()=>{
 
 recognition.stop();
 
-
 }
+
 
 
 
 recognition.onresult=function(event){
   console.log(event);
 if(event.results[0].isFinal)
-  document.querySelector("textarea").append(event.results[0][0].transcript);
+  document.getElementById("speaker").append(event.results[0][0].transcript);
 
 }
-}
+
 var socket=io();
-socket.on('connect',function()
-{
-  socket.emit('notes',{
-    Speaker:document.querySelector("textarea").innerHTML
-  })
-});
+var data={
+  Speaker:document.getElementById("speaker").textContent
+}
 
+  socket.emit('notes',data);
 
-socket.on('disconnect',function(){
-  console.log("Speaker disconnected");
-})
+}

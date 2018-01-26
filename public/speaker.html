@@ -5,15 +5,16 @@
     <title>Speech fun</title>
   </head>
   <body>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <h1>You are a Speaker.</h1>
     <script src="/socket.io/socket.io.js"></script>
     <script src="./js/script.js"></script>
 
 
-  <textarea rows="4" cols="50">
+  <textarea rows="4" cols="50" id="speaker">
 Notes.
 </textarea>
-    <button   id="speech">Speech</button>
-    <button   id="stop">Stop</button>
+    <button   id="speech" class="btn btn-primary">Speech</button>
+    <button   id="stop" class="btn btn-primary">Stop</button>
   </body>
 </html>

@@ -5,32 +5,29 @@
     <title>Speech fun</title>
   </head>
   <body>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <h1>You are a listener.</h1>
     <a href="/speaker.html">Speaker</a>
       <script src="/socket.io/socket.io.js"></script>
 <script>
 
 var socket=io();
-socket.on('connect',function()
-{
-  socket.on('listener',function(notes){
-    document.querySelector("textarea").innerHTML=notes.listen;
+  socket.on('notes',function(data){
+    document.getElementById("note").textContent=data.Speaker
 
-  })
-})
+  });
 
 
-socket.on('disconnect',function(){
-  console.log("Speaker disconnected");
-})
+
+
 
 
 
 
 </script>
-  <div><textarea rows="4" cols="50">
-Notes.
+  <div><textarea rows="4" cols="50" id="note">
+Notes
 </textarea>
 </div>
-  </body>
+</body>
 </html>
