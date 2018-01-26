@@ -34,10 +34,16 @@ if(event.results[0].isFinal)
 }
 
 var socket=io();
-var data={
+/*var data={
   Speaker:document.getElementById("speaker").textContent
 }
+*/
+document.getElementById("speaker").addEventListener("onchange",function(){
 
-  socket.emit('notes',data);
+socket.emit('notes',{
+  Speaker:document.getElementById("speaker").textContent
+});
+
+});
 
 }
